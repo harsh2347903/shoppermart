@@ -24,7 +24,7 @@ ShopperMart is a full-stack e-commerce web application featuring a responsive Re
 
 ```text
 ShopperMart/
-├── Backend/
+├── backend/
 │   ├── server/
 │   │   ├── config/          # MongoDB connection configuration
 │   │   ├── controllers/     # Route logic (auth, products, orders)
@@ -36,7 +36,7 @@ ShopperMart/
 │   │   └── index.js         # Entry point and server initialization
 │   ├── .env.example
 │   └── package.json
-└── Frontend/
+└── frontend/
     ├── src/
     │   ├── components/      # Header, SearchBar, ShopProductCard
     │   ├── pages/           # HomePage, ProductPage, LoginPage, AboutPage
@@ -59,7 +59,7 @@ ShopperMart/
 
 ### 1. Setup Backend
 ```bash
-cd Backend
+cd backend
 npm install
 cp .env.example .env
 npm run seed     # Seeds initial products and demo accounts
@@ -68,7 +68,7 @@ npm run dev      # Starts server on http://localhost:3000
 
 ### 2. Setup Frontend
 ```bash
-cd ../Frontend
+cd ../frontend
 npm install
 cp .env.example .env
 npm run dev      # Starts Vite dev server on http://localhost:5173
