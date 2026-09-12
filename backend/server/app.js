@@ -15,8 +15,24 @@ app.use(cors());
 // Custom middleware runs for every request and logs useful request information.
 app.use(requestLogger);
 
-// Simple routes are useful for checking that the server is available.
-app.get('/', (req, res) => res.json({ message: 'MERN Shop API is running' }));
+// Health check endpoints for Render and monitoring
+app.get('/', (req, res) => {
+  const isConnected = require('mongoose').connection.readyState === 1;
+  res.json({
+    status: 'ok',
+    message: 'MERN Shop API is running',
+    database: isConnected ? 'connected' : 'connecting / disconnected'
+  });
+});
+
+app.get('/health', (req, res) => {
+  const isConnected = require('mongoose').connection.readyState === 1;
+  res.status(200).json({
+    status: 'ok',
+    uptime: process.uptime(),
+    database: isConnected ? 'connected' : 'connecting / disconnected'
+  });
+});
 
 app.get('/about', (req, res) => {
   res.json({ message: 'This API demonstrates beginner Express.js concepts.' });

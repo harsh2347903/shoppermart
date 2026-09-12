@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const publicUser = user => ({ id: user._id, name: user.name, email: user.email, role: user.role });
-const makeToken = user => jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+const makeToken = user => jwt.sign({ userId: user._id }, process.env.JWT_SECRET || 'shoppermart_jwt_secret_key_2026', { expiresIn: '7d' });
 async function register(req, res) {
   try {
     const { name, email, password } = req.body;
